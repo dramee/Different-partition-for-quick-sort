@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-
 void swap(long* i, long* j) {
     long tmp = *i;
     *i = *j;
@@ -132,21 +131,41 @@ void printArray(long arr[], int size) {
     printf("\n");
 }
 
-void arrCopy(long* arr1, size_t size, long* arr2) {
+void arrCopy(const long* arr1, size_t size, long* arr2) {
     for (size_t i = 0; i <= size; i++) {
         arr2[i] = arr1[i];
     }
 }
 
+
+void shuffle ( long arr[], long n )
+{
+    // Use a different seed value so that we don't get same
+    // result each time we run this program
+    srand ( time(NULL) );
+
+    // Start from the last element and swap one by one. We don't
+    // need to run for the first element that's why i > 0
+    for (int i = n-1; i > 0; i--)
+    {
+        // Pick a random index from 0 to i
+        int j = rand() % (i+1);
+
+        // Swap arr[i] with the element at random index
+        swap(&arr[i], &arr[j]);
+    }
+}
+
 // Driver program
 int main() {
-    for (size_t i = 1000000; i <= 10000000; i = i + 1000) {
+    for (size_t i = 10000000; i < 1000000000; i = i + 1000) {
         printf("%zu", i);
         printf("%c", '\n');
         long* arr = (long*) malloc(sizeof(long) * i);
-        for (size_t j = 0; j <= i; j++){
-            arr[j] = rand() % 200;
+        for (size_t j = 0; j < i; j++){
+            arr[j] = (long)j;
         }
+        shuffle(arr, i);
 //        printArray(arr, i);
 //        printf("%c", '\n');
         long* arrCpy = (long*) malloc(sizeof(long) * i);
@@ -169,13 +188,9 @@ int main() {
         quickSortLomutoBranchFree(arr, arr + i);
         clock_t end3 = clock();
         float lomutoBFTime = end3 - start3;
-        printf("%.100f", hoareTime);
-        printf("%c", '\n');
-        printf("%.100f", lomutoTime);
-        printf("%c", '\n');
-        printf("%.100f", lomutoBFTime);
-        printf("%c", '\n');
-        printf("%c", '\n');
+        printf("%.100f\n", hoareTime);
+        printf("%.100f\n", lomutoTime);
+        printf("%.100f\n\n", lomutoBFTime);;
         free(arr);
         free(arrCpy);
     }
