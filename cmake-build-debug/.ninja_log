@@ -1,17 +1,5 @@
 # ninja log v5
-1	131	7023665452519873	CMakeFiles/Different_partition_for_quick_sort.dir/main.c.obj	bd350a639ef8ac4c
-132	239	7023665453583921	Different_partition_for_quick_sort.exe	266397305bd201d2
-3	96	7023666105375713	CMakeFiles/Different_partition_for_quick_sort.dir/main.c.obj	bd350a639ef8ac4c
-96	203	7023666106416595	Different_partition_for_quick_sort.exe	266397305bd201d2
-2	93	7023667405991832	CMakeFiles/Different_partition_for_quick_sort.dir/main.c.obj	bd350a639ef8ac4c
-93	200	7023667407043495	Different_partition_for_quick_sort.exe	266397305bd201d2
-2	99	7023667985859379	CMakeFiles/Different_partition_for_quick_sort.dir/main.c.obj	bd350a639ef8ac4c
-99	200	7023667986859408	Different_partition_for_quick_sort.exe	266397305bd201d2
-2	221	7092123158510021	CMakeFiles/Different_partition_for_quick_sort.dir/main.c.obj	bd350a639ef8ac4c
-221	400	7092123160300740	Different_partition_for_quick_sort.exe	266397305bd201d2
-1	78	7092124412707970	CMakeFiles/Different_partition_for_quick_sort.dir/main.c.obj	bd350a639ef8ac4c
-78	163	7092124413545164	Different_partition_for_quick_sort.exe	266397305bd201d2
-1	91	7092124550727521	CMakeFiles/Different_partition_for_quick_sort.dir/main.c.obj	bd350a639ef8ac4c
-92	188	7092124551694327	Different_partition_for_quick_sort.exe	266397305bd201d2
-1	89	7092127338252512	CMakeFiles/Different_partition_for_quick_sort.dir/main.c.obj	bd350a639ef8ac4c
-89	211	7092127339528279	Different_partition_for_quick_sort.exe	266397305bd201d2
+2	143	7092165903163349	CMakeFiles/Different_partition_for_quick_sort.dir/main.c.obj	bd350a639ef8ac4c
+144	272	7092165904432192	Different_partition_for_quick_sort.exe	266397305bd201d2
+3	313	7092173281151934	CMakeFiles/Different_partition_for_quick_sort.dir/main.c.obj	9a4ca3650da15718
+313	414	7092173282146941	Different_partition_for_quick_sort.exe	8a420a9fe5899b5b

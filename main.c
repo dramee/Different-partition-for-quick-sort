@@ -72,7 +72,7 @@ long* lomuto_partition(long* first, long* last) {
 }
 
 long* lomuto_partition_branchfree(long* first, long* last) {
-    assert(first <= last);
+//    assert(first <= last);
     if (last - first < 2)
         return first; // nothing interesting to do
     --last;
@@ -82,17 +82,17 @@ long* lomuto_partition_branchfree(long* first, long* last) {
     long pivot = *first;
     do {
         ++first;
-        assert(first <= last);
+//        assert(first <= last);
     } while (*first < pivot);
     for (long* read = first + 1; read < last; ++read) {
-        long  long x = *read;
-        long long smaller = -(long long)(x < pivot);
-        long long delta = smaller & (read - first);
+        long x = *read;
+        int smaller = -(x < pivot);
+        size_t delta = smaller & (read - first);
         first[delta] = *first;
-        read[-delta] = (long)x;
+        read[-delta] = x;
         first -= smaller;
     }
-    assert(*first >= pivot);
+//    assert(*first >= pivot);
     --first;
     *pivot_pos = *first;
     *first = pivot;
@@ -110,16 +110,16 @@ void quickSortLomuto(long* low, long* high) {
 void quickSortHoare(long* low, long* high) {
     if (low < high) {
         long* pi = hoare_partition( low, high);
-        quickSortLomuto(low, pi - 1);
-        quickSortLomuto( pi + 1, high);
+        quickSortHoare(low, pi - 1);
+        quickSortHoare( pi + 1, high);
     }
 }
 
 void quickSortLomutoBranchFree(long* low, long* high){
     if (low < high) {
         long* pi = lomuto_partition_branchfree( low, high);
-        quickSortLomuto(low, pi);
-        quickSortLomuto( pi + 1, high);
+        quickSortLomutoBranchFree(low, pi);
+        quickSortLomutoBranchFree( pi + 1, high);
     }
 }
 
@@ -158,7 +158,7 @@ void shuffle ( long arr[], long n )
 
 // Driver program
 int main() {
-    for (size_t i = 10000000; i < 1000000000; i = i + 1000) {
+    for (size_t i = 10000000; i < 100000000; i = i + 1000) {
         printf("%zu", i);
         printf("%c", '\n');
         long* arr = (long*) malloc(sizeof(long) * i);
@@ -176,20 +176,20 @@ int main() {
 //        printArray(arrCpy, i);
 //        printf("%c", '\n');
         float hoareTime = end1 - start1;
-        clock_t start2 = clock();
+        printf("%.100f\n", hoareTime);
         arrCopy(arr, i, arrCpy);
+        clock_t start2 = clock();
         quickSortLomuto(arrCpy, arrCpy + i);
 //        printf("%c", '\n');
 //        printArray(arrCpy, i);
 //        printf("%c", '\n');
         clock_t end2 = clock();
         float lomutoTime = end2 - start2;
+        printf("%.100f\n", lomutoTime);
         clock_t start3 = clock();
         quickSortLomutoBranchFree(arr, arr + i);
         clock_t end3 = clock();
         float lomutoBFTime = end3 - start3;
-        printf("%.100f\n", hoareTime);
-        printf("%.100f\n", lomutoTime);
         printf("%.100f\n\n", lomutoBFTime);;
         free(arr);
         free(arrCpy);
